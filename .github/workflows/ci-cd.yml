@@ -1,0 +1,25 @@
+name: Frontend CI/CD
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "frontend/**"
+      - ".github/workflows/ci-cd.yml"
+
+  workflow_dispatch:
+
+jobs:
+  docker:
+    name: Build and publish frontend
+    uses: Nesco52/Action3/.github/workflows/docker-build-push.yml@main
+
+    with:
+      image_name: appgestion-frontend
+      build_context: ./frontend
+      dockerfile: ./frontend/Dockerfile
+
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
