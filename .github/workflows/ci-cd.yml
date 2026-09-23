@@ -13,7 +13,7 @@ on:
 jobs:
   docker:
     name: Build and publish frontend
-    uses: Nesco52/Action3/.github/workflows/docker-build-push.yml@main
+    uses: nesco-devops/Action3/.github/workflows/docker-build-push.yml@main
 
     with:
       image_name: appgestion-frontend
